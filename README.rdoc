@@ -1,0 +1,11 @@
+== README
+
+Example application for Rails 4 and the tooling API.
+
+To Do: 
+- Get Capybara wired up
+- Show method for ApexClass
+
+
+dynamex 6303505370 
+144487220

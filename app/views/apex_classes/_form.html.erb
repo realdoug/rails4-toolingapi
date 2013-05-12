@@ -1,0 +1,23 @@
+<%= form_for(@apex_class, url: new_apex_class_path) do |f| %>
+  <% if @apex_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apex_class.errors.count, "error") %> prohibited this apex_class from being saved:</h2>
+      render!
+
+      <ul>
+      <% @apex_class.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <textarea cols="100" rows="40">
+      <%= @apex_class_body %>
+    </textarea>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
