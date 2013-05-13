@@ -3,12 +3,35 @@
 <head>
   <title>ToolingApi</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+   <%= stylesheet_link_tag    "/codemirror-3.12/lib/codemirror.css", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "/codemirror-3.12/lib/codemirror.js", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "/codemirror-3.12/mode/clike/clike.js", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  
+
+
+
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
 
+  <script>
+	// myTextArea = document.getElementById('editor');
+ // //  	var myCodeMirror = CodeMirror.fromTextArea(myTextArea);
+ // 	var myCodeMirror = CodeMirror(function(elt) {
+	//   myTextArea.parentNode.replaceChild(elt, myTextArea);
+	// }, {value: myTextArea.value});
+
+
+  var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+    lineNumbers: true,
+    matchBrackets: true,
+    mode: "text/x-java"
+  });
+    
+  </script>
 </body>
 </html>
