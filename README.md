@@ -1,7 +1,7 @@
-rails4-toolingapi
+Rails 4 / SFDC Tooling API
 =================
 
-A proof of concept integration btwn Salesforce's Tooling API and Rails4.
+A proof of concept for how to build your own Cloud IDE for Force.com Development with Rails4 and Salesforce's Tooling API.
 
 To Do:
 * Implement 'create' controller method
