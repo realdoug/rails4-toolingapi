@@ -1,11 +1,11 @@
 class ApexClassesController < ApplicationController
   #comment the below method until i figure out how to implement it
-  #before_action :set_apex_class, only: [:show, :edit, :update, :destroy]
+  before_action :set_apex_class, only: [:edit, :update, :destroy]
 
   # GET /apex_classes
   # GET /apex_classes.json
   def index
-    @apex_classes = Restforce.tooling(SalesforceUtility.init_args).query "SELECT Id, Name FROM ApexClass"
+    @apex_classes = sfdc_client.query "SELECT Id, Name FROM ApexClass"
   end
 
   ## Show method isn't really necessary here
@@ -18,13 +18,12 @@ class ApexClassesController < ApplicationController
 
   # GET /apex_classes/new
   def new
-    @apex_class = Restforce::SObject.new
-    @apex_class_body = ''#CGI.unescape(@apex_class.Body)
+    @apex_class = ApexClass.new
+    @apex_class_body = ''
   end
 
   # GET /apex_classes/1/edit
   def edit
-    @apex_class = Restforce.tooling(SalesforceUtility.init_args).find("ApexClass", params[:id])
     @apex_class_body = CGI.unescape(@apex_class.Body)
   end
 
@@ -72,11 +71,16 @@ class ApexClassesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_apex_class
       # @apex_class = ApexClass.find(params[:id])
-      # some sort of sfdc query would go here
+      @apex_class = sfdc_client.find("ApexClass", params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apex_class_params
       params[:apex_class]
+    end
+
+    def sfdc_client
+      sfdc_init_args = YAML.load_file('config/salesforce.yml')[Rails.env]
+      Restforce.tooling(sfdc_init_args)
     end
 end

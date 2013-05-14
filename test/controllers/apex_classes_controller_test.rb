@@ -13,6 +13,7 @@ class ApexClassesControllerTest < ActionController::TestCase
 
   test "apex_classes variable is an array of SObjects" do
     get :index
+    assert assigns(:apex_classes).class == Restforce::Collection
     assigns(:apex_classes).each do |apex_class|
       assert apex_class.class == Restforce::SObject
     end
@@ -20,6 +21,11 @@ class ApexClassesControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit, id: @apex_class
     assert_response :success
   end
 
@@ -31,15 +37,6 @@ class ApexClassesControllerTest < ActionController::TestCase
   #   assert_redirected_to apex_class_path(assigns(:apex_class))
   # end
 
-  # test "should show apex_class" do
-  #   get :show, id: @apex_class
-  #   assert_response :success
-  # end
-
-  # test "should get edit" do
-  #   get :edit, id: @apex_class
-  #   assert_response :success
-  # end
 
   # test "should update apex_class" do
   #   patch :update, id: @apex_class, apex_class: {  }

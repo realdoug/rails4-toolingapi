@@ -1,4 +1,10 @@
 <%= form_for(@apex_class, url: new_apex_class_path) do |f| %>
+
+  <div class="actions">
+    <%= f.submit "Compile" %>
+  </div>
+
+
   <% if @apex_class.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@apex_class.errors.count, "error") %> prohibited this apex_class from being saved:</h2>
@@ -19,6 +25,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Save" %>
+    <%= f.submit "Compile" %>
   </div>
+
 <% end %>
