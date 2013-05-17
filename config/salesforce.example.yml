@@ -1,0 +1,12 @@
+development:
+  :client_id: 'value'
+  :client_secret: 'value'
+  :username: 'dummy@test.com'
+  :password: 'testtesttest'
+  :api_version: '27.0'
+test:
+  :client_id: 'value'
+  :client_secret: 'value'
+  :username: 'dummy@test.com'
+  :password: 'testtesttest'
+  :api_version: '27.0'
